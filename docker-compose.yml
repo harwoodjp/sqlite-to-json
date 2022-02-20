@@ -1,0 +1,9 @@
+version: "3.3"
+    
+services:
+  grist:
+    image: gristlabs/grist
+    ports:
+      - 8484:8484
+    environment:
+      DEBUG: 0
