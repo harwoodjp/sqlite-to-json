@@ -1,0 +1,12 @@
+database:
+  /home/j/Projects/sqlite-to-json/grist-export.db
+
+output:
+  /home/j/Projects/sqlite-to-json/grist-export.json    
+
+exclude:
+  tables:
+    - grist
+  columns:
+    - grist
+    - manualSort

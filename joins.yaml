@@ -1,4 +1,3 @@
----
-  author_books:
-  - author: id
-  - books: author
+author_books:
+- author: id
+- book: author_id
