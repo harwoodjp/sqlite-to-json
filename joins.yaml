@@ -1,0 +1,4 @@
+---
+  author_books:
+  - author: id
+  - books: author

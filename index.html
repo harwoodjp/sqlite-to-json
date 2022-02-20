@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		fetch("./database.json")
+			.then(res => res.json())
+			.then(data => {
+				const body = document.querySelector("body")
+				body.innerHTML += "foo"
+				for (table in data) {
+					console.log(table)
+					data[table].forEach(row => console.log(row))
+				}
+			})
+	</script>
+</head>
+<body>
+</body>
+</html>
