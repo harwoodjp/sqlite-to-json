@@ -7,3 +7,5 @@ services:
       - 8484:8484
     environment:
       DEBUG: 0
+    volumes:
+      - /home/j/Projects/sqlite-to-json/grist-vol:/persist

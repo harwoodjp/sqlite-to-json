@@ -1,8 +1,8 @@
 database:
-  /home/j/Projects/sqlite-to-json/grist-export.db
+  /home/j/Projects/sqlite-to-json/Library.grist
 
 output:
-  /home/j/Projects/sqlite-to-json/grist-export.json    
+  /home/j/Projects/sqlite-to-json/database.json    
 
 exclude:
   tables:
