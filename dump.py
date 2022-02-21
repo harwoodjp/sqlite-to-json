@@ -17,9 +17,15 @@ conn = sqlite3.connect(config["database"])
 
 def exclude_table(tableName, config):
   for pattern in config["exclude"]["tables"]:
-    if pattern in table:
+    if pattern in tableName:
       return True
-    return False
+  return False
+
+def exclude_column(columnName, config):
+  for pattern in config["exclude"]["columns"]:
+    if pattern in columnName:
+      return True
+  return False
 
 
 # build data object from queries
@@ -36,11 +42,10 @@ for row in cursor.execute(LIST_TABLE_NAMES):
     cols = list(map(lambda x: x[0], cursor2.description))
     record = {}
     for i, col in enumerate(cols):
-      record[col] = row2[i]
+      if not exclude_column(col, config):
+        record[col] = row2[i]
     records.append(record)
   data[table] = records
-
-print(type(data))
 
 # write data to json
 with open(config["output"], "w") as f:
@@ -61,7 +66,6 @@ with open("./joins.yaml", "r") as stream:
         cols.append(side[table])
     join_query += "SELECT * FROM " + tables[0] + " INNER JOIN " + tables[1] + " ON " + tables[0] + "." + cols[0] + " = " + tables[1] + "." + cols[1]
     join_queries.append(join_query)
-
   except yaml.YAMLError as error:
     print(error)
 
